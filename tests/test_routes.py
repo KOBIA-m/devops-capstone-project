@@ -52,6 +52,7 @@ def test_get_account(self):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(data["name"], account.name)
+        
 def test_cors_security(self):
     """It should return a CORS header"""
     response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
@@ -185,7 +186,7 @@ class TestAccountService(TestCase):
         response = self.client.post(
             BASE_URL,
             json=account.serialize(),
-            content_type="test/html" UUUU
+            content_type="test/html"
 
         )
         self.assertEqual(response.status_code, status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
